@@ -1,0 +1,7 @@
+Given a list of names
+
+Check campfire for new posts
+  if a new post then process:
+   If post contains a name in list make the notification sticky
+     send the notification to growl
+    
