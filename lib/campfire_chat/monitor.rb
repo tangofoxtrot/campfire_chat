@@ -4,7 +4,7 @@ module CampfireChat
     attr_accessor :last_run_time
 
     def self.retry_time
-      60
+      30
     end
 
     def self.sleep_time
