@@ -14,6 +14,10 @@ module CampfireChat
       @error = false
     end
 
+    def body
+      message.body
+    end
+
     def important?
       @important
     end

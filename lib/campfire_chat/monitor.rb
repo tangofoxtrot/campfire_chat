@@ -1,12 +1,40 @@
 module CampfireChat
   class Monitor
     include Singleton
+    attr_accessor :last_run_time
+
+    def self.retry_time
+      60
+    end
+
+    def self.sleep_time
+      retry_time / 2
+    end
+
+    def run
+      loop do
+        if check_client?
+          check_messages
+          set_last_run_time
+          sleep self.class.sleep_time
+        end
+      end
+    end
 
     def check_messages
       client.messages.each do |message|
         notification = prepare_notification(message)
-        notifer.push(notification)
+        notifier.push(notification)
       end
+    end
+
+    def set_last_run_time
+      self.last_run_time = Time.now
+    end
+
+    def check_client?
+      return true if last_run_time.nil?
+      last_run_time + self.class.retry_time < Time.now
     end
 
     def prepare_notification(message)

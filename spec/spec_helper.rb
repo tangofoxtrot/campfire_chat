@@ -20,3 +20,8 @@ end
 def fixture_path(file_name)
   Pathname.new(File.dirname(__FILE__)).join('fixtures', file_name)
 end
+
+def build_message(user, message, type='TextMessage')
+  @message_id ||= 0
+  double(:user => double(:name => user), :body=> message, :user_id=>"1", :id=> @message_id += 1, :type => type)
+end

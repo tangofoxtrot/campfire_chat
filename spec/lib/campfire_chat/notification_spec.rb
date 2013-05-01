@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CampfireChat::Notification do
-  let(:message) { double }
+  let(:message) { double(:body => 'the body') }
   let(:notification) { described_class.new(message) }
 
   describe '#important?' do
@@ -31,6 +31,12 @@ describe CampfireChat::Notification do
         notification.error!
         notification.should be_error
       end
+    end
+  end
+
+  describe '#body' do
+    it 'returns the message body' do
+      notification.body.should == message.body
     end
   end
 

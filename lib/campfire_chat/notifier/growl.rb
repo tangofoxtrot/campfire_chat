@@ -5,7 +5,7 @@ module CampfireChat
       include Singleton
 
       def push(notification)
-        growl.notify_ok notification.content, :sticky => notification.important?
+        growl.notify_ok notification.body, :sticky => notification.important?
       end
 
       def growl
