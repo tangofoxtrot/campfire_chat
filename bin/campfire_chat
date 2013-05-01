@@ -7,11 +7,15 @@ require 'campfire_chat'
 options = {}
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: campfire_chat [Names seperated by commas] [options]"
+  opts.banner = "Usage: campfire_chat [Names seperated by spaces] [options]"
 end.parse!
 
+raise RuntimeError.new("growlnotify is required to run campfire_chat") if `which growlnotify`.empty?
+
 pairs = ARGV
+
 pairs.each do |pair|
   CampfireChat.config.add_pair pair
 end
+
 CampfireChat::Monitor.run
