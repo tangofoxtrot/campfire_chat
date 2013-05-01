@@ -1,4 +1,5 @@
 require 'singleton'
+require 'time' #getting an error with Tinder "#undefined method parse for Time
 require "campfire_chat/version"
 require 'campfire_chat/engineer'
 require 'campfire_chat/client'

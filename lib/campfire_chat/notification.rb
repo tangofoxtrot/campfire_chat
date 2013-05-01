@@ -10,12 +10,17 @@ module CampfireChat
 
     def initialize(message)
       @message = message
+      @additional_messages = []
       @important = false
       @error = false
     end
 
     def body
-      message.body
+      (@additional_messages + [message.body]).join("\n")
+    end
+
+    def <<(more_message)
+      @additional_messages << more_message
     end
 
     def important?

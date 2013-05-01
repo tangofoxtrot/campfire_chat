@@ -11,6 +11,10 @@ module CampfireChat
       retry_time / 2
     end
 
+    def self.run
+      instance.run
+    end
+
     def run
       loop do
         if check_client?

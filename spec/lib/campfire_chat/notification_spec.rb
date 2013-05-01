@@ -34,6 +34,13 @@ describe CampfireChat::Notification do
     end
   end
 
+  describe '#<<' do
+    it 'prepends strings to the message body' do
+      notification << 'YO'
+      notification.body.should == "YO\n#{message.body}"
+    end
+  end
+
   describe '#body' do
     it 'returns the message body' do
       notification.body.should == message.body
