@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'rubygems'
+require 'campfire_chat'
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: campfire_chat [Names seperated by commas] [options]"
+end.parse!
+
+pairs = ARGV[0].to_s.split(',').each {|name| name.trim! }
+pairs.each do |pair|
+  CampfireChat.config.add_pair pair
+end

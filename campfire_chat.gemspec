@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = CampfireChat::VERSION
   spec.authors       = ["Richard Luther"]
   spec.email         = ["richard.luther@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Monitor a campfire room for messages to notify via growl}
+  spec.summary   = %q{Monitor a campfire room for messages to notify via growl}
   spec.homepage      = ""
   spec.license       = "MIT"
 
