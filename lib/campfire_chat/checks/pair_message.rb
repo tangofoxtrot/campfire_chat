@@ -7,13 +7,13 @@ module CampfireChat
         CampfireChat.config.pairs.each do |pair|
           if notification.message.body.include?(pair.name)
             notification.important!
-            notification << message(pair)
+            notification.add_title title(pair)
           end
         end
       end
 
-      def self.message(pair)
-        "#{pair.name}: Someone has mentioned your name"
+      def self.title(pair)
+        "#{pair.name}:"
       end
     end
   end

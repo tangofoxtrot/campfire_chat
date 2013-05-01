@@ -11,6 +11,7 @@ module CampfireChat
     def initialize(message)
       @message = message
       @additional_messages = []
+      @titles = []
       @important = false
       @error = false
     end
@@ -21,6 +22,14 @@ module CampfireChat
 
     def <<(more_message)
       @additional_messages << more_message
+    end
+
+    def add_title(another_title)
+      @titles << another_title
+    end
+
+    def title
+      @titles.join("\n")
     end
 
     def important?

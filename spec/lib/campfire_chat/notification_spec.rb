@@ -41,6 +41,14 @@ describe CampfireChat::Notification do
     end
   end
 
+  describe '#add_title' do
+    it 'adds the title to the list of titles' do
+      notification.add_title 'YO'
+      notification.add_title 'MA'
+      notification.title.should == "YO\nMA"
+    end
+  end
+
   describe '#body' do
     it 'returns the message body' do
       notification.body.should == message.body

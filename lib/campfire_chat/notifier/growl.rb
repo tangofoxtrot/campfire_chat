@@ -5,11 +5,21 @@ module CampfireChat
       include Singleton
 
       def push(notification)
-        growl.notify_ok notification.body, :sticky => notification.important?
+        notify_ok notification
       end
 
       def growl
         ::Growl
+      end
+
+      private
+
+      def notify_ok(notification)
+        growl.notify notification.body, :title => notification.title, :sticky => notification.important?, :image => image_path('sr')
+      end
+
+      def image_path(image)
+        File.join(File.expand_path(File.dirname(__FILE__)), '../', 'images', "#{image}.png")
       end
 
     end

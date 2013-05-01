@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe CampfireChat::Checks::PairMessage do
   let(:message) { double(:body => 'Fred you broke the build') }
-  let(:notification) { double(:message => message, :important! => true, :<< => nil)}
+  let(:notification) { double(:message => message, :important! => true, :<< => nil, :add_title => nil)}
   let(:config) { double(:pairs => [double(:name => 'Bob')]) }
   before do
     CampfireChat.stub(:config => config)
@@ -18,8 +18,8 @@ describe CampfireChat::Checks::PairMessage do
         CampfireChat::Checks::PairMessage.process_notification(notification)
       end
 
-      it 'adds additional messages to the notification' do
-        notification.should_receive(:<<).with("Fred: Someone has mentioned your name")
+      it 'adds additional titles to the notification' do
+        notification.should_receive(:add_title).with("Fred:")
         CampfireChat::Checks::PairMessage.process_notification(notification)
       end
     end

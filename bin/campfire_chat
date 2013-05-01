@@ -10,7 +10,7 @@ OptionParser.new do |opts|
   opts.banner = "Usage: campfire_chat [Names seperated by spaces] [options]"
 end.parse!
 
-raise RuntimeError.new("growlnotify is required to run campfire_chat") if `which growlnotify`.empty?
+raise RuntimeError.new("growlnotify is required to run campfire_chat\nDownload from https://bitbucket.org/pmetzger/growl/downloads") if `which growlnotify`.empty?
 
 pairs = ARGV
 
