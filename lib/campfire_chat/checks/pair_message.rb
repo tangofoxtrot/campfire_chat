@@ -5,7 +5,7 @@ module CampfireChat
 
       def self.process_notification(notification)
         CampfireChat.config.pairs.each do |pair|
-          if notification.message.body.include?(pair.name)
+          if notification.message.body.downcase.include?(pair.name.downcase)
             notification.important!
             notification.add_title title(pair)
           end
