@@ -22,6 +22,13 @@ describe CampfireChat::Checks::PairMessage do
         notification.should_receive(:add_title).with("Fred:")
         CampfireChat::Checks::PairMessage.process_notification(notification)
       end
+
+      it 'is case insensitive' do
+        message = double(:body => 'FREd you broke the build')
+        notification = double(:message => message, :important! => true, :<< => nil, :add_title => nil)
+        notification.should_receive(:add_title).with("Fred:")
+        CampfireChat::Checks::PairMessage.process_notification(notification)
+      end
     end
 
     context 'when the notification does not contain a name in the pairs' do
